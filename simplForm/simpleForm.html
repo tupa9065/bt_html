@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .interest{
+        font-family: Arial;
+    }
+    .info{color: blue}
+</style>
+<body>
+<div class="interest">
+    <form method="post" action="https://www.bing.com/">
+    <table border="1" style="width: 550px">
+        <tr>
+            <th colspan="2" style="background: orangered; color: white"> Sở Thích</th>
+        </tr>
+        <tr>
+            <td class="info">Họ và tên</td>
+            <td><input type="text" name="yourname" size="50"></td>
+        </tr>
+        <tr>
+            <td class="info">Email</td>
+            <td><input type="text" name="email" size="50"></td>
+        </tr>
+        <tr>
+            <td class="info">Sở thích</td>
+            <td style="color: orange">
+                <input  type="checkbox" name="hobby" />thể thao
+                <input type="checkbox" name="hobby" />Âm nhạc
+                <input type="checkbox" name="hobby" />Đọc sách
+                <br/>
+                <input  type="checkbox" name="hobby" />Lướt Web
+                <input  type="checkbox" name="hobby" />Chơi game
+                <input  type="checkbox" name="hobby" />Điện ảnh
+                <br/>
+                <input  type="checkbox" name="hobby" />Du Lịch
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" style="text-align: center">
+                <input type="submit" name="Submit Form" value="Gửi thông tin">
+                <input type="reset" name="Reset Form" value="Nhập lại">
+            </td>
+        </tr>
+    </table>
+    </form>
+</div>
+</body>
+</html>
