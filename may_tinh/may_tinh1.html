@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            <label for="nhap1"></label><input id="nhap1" type="number" name="number">
+            <label for="nhap2"></label><input id="nhap2" type="number" name="number">
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td><button type="button" onclick="cong()" value="cong()">Addition +</button></td>
+        <td><button type="button" onclick="tru()">Subtraction -</button></td>
+        <td><button type="button" onclick="nhan()">Multiplication *</button></td>
+        <td><button type="button" onclick="chia()">Division /</button></td>
+    </tr>
+    <tr>
+        <td id="result"></td>
+    </tr>
+</table>
+</body>
+</html>
+<script>
+    function cong() {
+        let a;
+        a = +document.getElementById('nhap1').value + +document.getElementById('nhap2').value;
+        document.getElementById('result').innerHTML = a;
+    }
+    function tru() {
+        let a;
+        a = +document.getElementById('nhap1').value - +document.getElementById('nhap2').value;
+        document.getElementById('result').innerHTML = a;
+    }
+    function nhan() {
+        let a;
+        a = +document.getElementById('nhap1').value * +document.getElementById('nhap2').value;
+        document.getElementById('result').innerHTML = a;
+    }
+    function chia() {
+        let a;
+        a = +document.getElementById('nhap1').value / +document.getElementById('nhap2').value;
+        document.getElementById('result').innerHTML = a;
+    }
+</script>
