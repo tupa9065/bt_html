@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <td>Nhập bán kính của hình tròn</td>
+            <td><label>
+                <input type="number" id="d"/>
+            </label></td>
+        </tr>
+        <tr>
+            <td >
+                <button type="button" onclick="p()">chu vi hình tròn</button>
+            </td>
+            <td>
+                <p id="chuvi"></p>
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <button type="button" onclick="s()">diện tích hình tròn</button>
+            </td>
+            <td>
+                <p id="dientich"></p>
+            </td>
+        </tr>
+    </table>
+</form>
+<script>
+    function p(){
+        let d = +document.getElementById('d').value;
+        const pi= 3.14;
+        document.getElementById('chuvi').innerHTML= d * pi +'';
+    }
+    function s(){
+        let d = +document.getElementById('d').value;
+        const pi=3.14;
+        document.getElementById('dientich').innerHTML=d * d * pi /4 +'';
+    }
+</script>
+
+</body>
+</html>

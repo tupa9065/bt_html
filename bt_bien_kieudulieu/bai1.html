@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <form>
+        <table>
+            <tr>
+                <td>Vật lý</td>
+                <td><input type="number" name="diemVatLy" id="diemVL"  ></td>
+            </tr>
+            <tr>
+                <td>Hóa học</td>
+                <td><input type="number" name="diemHoaHoc" id="diemHH" ></td>
+            </tr>
+            <tr>
+                <td>Sinh học</td>
+                <td><input type="number" name="diemSinhHoc" id="diemSH" ></td>
+            </tr>
+            <tr>
+                <td><button type="button" onclick="diemTB()" name=" Điểm trung bình">tính điểm TB</button></td>
+                <td  ><p id="kq"> </p></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script>
+    function diemTB(){
+        var a= +document.getElementById("diemVL").value;
+        var b= +document.getElementById("diemHH").value;
+        var c= +document.getElementById("diemSH").value
+        var diemTB = (a+ b + c) / 3;
+        document.getElementById('kq').innerHTML = diemTB;
+    }
+</script>
+</body>
+</html>
