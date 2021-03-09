@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <form>
+        <table>
+            <tr>
+                <th>Amount</th>
+                <th>From Currency</th>
+                <th>To Curency</th>
+
+            </tr>
+            <tr>
+                <td><label for="amount"></label>
+                    <input type="number" id="amount" value="1" name="amountV"/></td>
+                <td>
+                    <label for="select1"></label>
+                    <select id="select1">
+                        <option value="VND">Việt nam đồng</option>
+                        <option value="USD">USD</option>
+
+                    </select>
+                </td>
+                <td>
+                    <label for="select2"></label><select id="select2">
+                    <option value="USD">USD</option>
+                    <option value="VND">Việt nam đồng</option>
+                </select>
+                </td>
+                <td><button type="button" onclick="change()">Convert</button></td>
+            </tr>
+            <tr>
+                <td id="result" style="color: blue"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+<script>
+    function change(){
+        let amount = +document.getElementById('amount').value;
+        let currency1 = document.getElementById('select1').value;
+        let currency2 = document.getElementById('select2').value;
+        let y =amount;
+        switch (currency1 + ' ' + currency2) {
+            case "VND USD":
+                y=y/23000;
+                document.getElementById('result').innerHTML="result = $ " +y.toFixed(2)
+                break
+            case "USD USD":
+                document.getElementById('result').innerHTML="result = $ " +y.toFixed(2);
+                break
+            case "VND VND":
+                document.getElementById('result').innerHTML="result = $ " +y.toFixed(2)
+                break
+            case "USD VND":
+                y = amount*23000;
+                document.getElementById('result').innerHTML="result = $ " +y.toFixed(2);
+                break
+        }
+    }
+</script>
