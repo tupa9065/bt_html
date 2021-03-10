@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form>
+    <span>Tháng</span>
+    <select id="sl1" onchange="tinhNgay()" >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+    </select><label for="sl1"></label>
+        <span id="sp1"></span>
+    </form>
+
+    <script>
+        function tinhNgay(){
+            let thang=document.getElementById('sl1').value;
+            switch(thang){
+                case "1":
+                    document.getElementById('sp1').innerHTML='có 31 ngày';
+                    break;
+                case "2":
+                    document.getElementById('sp1').innerHTML='có 28 hoặc 29 ngày';
+                    break;
+                case "3":
+                    document.getElementById('sp1').innerHTML='có 31 ngày';
+                    break;
+                case "4":
+                    document.getElementById('sp1').innerHTML='có 30 ngày';
+                    break;
+                case "5":
+                    document.getElementById('sp1').innerHTML='có 31 ngày';
+                    break;
+                case "6":
+                    document.getElementById('sp1').innerHTML='có 30 ngày';
+                    break;
+                case "7":
+                    document.getElementById('sp1').innerHTML='có 31 ngày';
+                    break;
+                case "8":
+                    document.getElementById('sp1').innerHTML='có 31 ngày';
+                    break;
+                case "9":
+                    document.getElementById('sp1').innerHTML='có 30 ngày';
+                    break;
+                case "10":
+                    document.getElementById('sp1').innerHTML='có 31 ngày';
+                    break;
+                case "11":
+                    document.getElementById('sp1').innerHTML='có 30 ngày';
+                    break;
+                case "12":
+                    document.getElementById('sp1').innerHTML='có 31 ngày';
+                    break;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
