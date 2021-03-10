@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #loveQuestion {
+        position: absolute;
+        left: 220px;
+        top: 230px;
+        font-size: 80px;
+    }
+    input {
+        width: 200px;
+        font-size: 30px;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+    }
+
+    #bt1 {
+        position: absolute;
+        left: 480px;
+        top: 450px;
+        background-color: #7bd806;
+        cursor: pointer;
+    }
+
+    #bt2 {
+        position: absolute;
+        left: 860px;
+        top: 450px;
+        background-color: #f4511e;
+        transition: 0.3s;
+    }
+</style>
+<body>
+<div>
+    <h1 id="loveQuestion">Do you love me?</h1>
+    <br/>
+    <button type="button" class="bt" id="bt1" onclick="yes()">Yes</button>
+    <button type="button" class="bt" id="bt2" onmouseover="noHover()">No</button>
+</div>
+<script>
+    function yes(){
+        alert("oh! but i do not love you, sorry")
+    }
+    function noHover(){
+
+        let x =Math.floor(Math.random()*window.innerWidth);
+        let y =Math.floor(Math.random()*window.innerHeight);
+        document.getElementById("bt2").style.left = x + "px";
+        document.getElementById("bt2").style.top = y + "px";
+    }
+</script>
+</body>
+</html>
