@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var useName= prompt("nhập tên đăng nhập ",'');
+
+    if(useName==="Admin"){
+        var pwd=prompt("Nhập mật khẩu ",'');
+            if(pwd==="TheMaster"){
+                alert("Welcome");
+            } else if(pwd===""){
+                alert("Canceled");
+            }else {
+                alert("Wrong password");
+            }
+    }else if(useName===""){
+        alert("Canceled");
+    }else {
+        alert("I done no you");
+    }
+
+</script>
+</body>
+</html>
