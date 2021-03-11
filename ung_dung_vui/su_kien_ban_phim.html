@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="doReady()" >
+<form>
+    <img id="nobita" src="nobita.png" alt="nobita">
+</form>
+<script>
+    let element;
+    element=document.getElementById('nobita');
+
+
+
+    function up(){
+        let element=document.getElementById('nobita');
+        element.style.top=parseInt(element.style.top) -5+'px';
+    }
+    function down(){
+        let element=document.getElementById('nobita');
+        element.style.top=parseInt(element.style.top) +5+'px';
+    }
+    function left(){
+        let element=document.getElementById('nobita');
+        element.style.left=parseInt(element.style.left) -5+'px';
+    }
+    function right(){
+        let element=document.getElementById('nobita');
+        element.style.left=parseInt(element.style.left) +5+'px';
+    }
+    function moveSelect(evt ){
+        switch(evt.keyCode){
+            case 37:
+                left();
+                break;
+            case 39:
+                right();
+                break;
+            case 38:
+                up();
+                break;
+            case 40:
+                down();
+                break;
+            default:
+                alert("bấm nút mũi tên để di chuyển");
+                break;
+        }
+
+    }
+    function doReady(){
+        window.addEventListener('keydown',moveSelect);
+        imgObj=document.getElementById('nobita');
+        imgObj.style.position='relative';
+        imgObj.style.left='0px';
+        imgObj.style.top='0px';
+    }
+</script>
+</body>
+</html>

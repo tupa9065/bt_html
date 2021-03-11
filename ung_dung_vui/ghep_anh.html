@@ -1,10 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>game</title>
+    <style>
+        img {
+            height: 100px;
+            width: 350px;
+        }
+    </style>
 </head>
 <body>
-$END$
+<table style="margin-left: 500px">
+    <tr>
+        <td><img id="img1" src="cat1.jpg" alt="11"></td>
+    </tr>
+    <tr>
+        <td><img id="img2" src="panda2.jpg" alt="22"></td>
+    </tr>
+    <tr>
+        <td><img id="img3" src="cat3.jpg" alt="33"></td>
+    </tr>
+    <tr>
+        <td><img id="img4" src="monkey4.jpg" alt="44"></td>
+    </tr>
+    <tr>
+        <td><img id="img5" src="cat5.jpg" alt="55"></td>
+    </tr>
+
+</table>
 </body>
 </html>
+<script>
+    let image1 = document.getElementById("img1");
+    let image2 = document.getElementById("img2");
+    let image3 = document.getElementById("img3");
+    let image4 = document.getElementById("img4");
+    let image5 = document.getElementById("img5");
+
+    image1.addEventListener("click",changeImg1);
+    image2.addEventListener("click",changeImg2);
+    image3.addEventListener("click",changeImg3);
+    image4.addEventListener("click",changeImg4);
+    image5.addEventListener("click",changeImg5);
+
+    checkforMatch()
+
+    function changeImg1() {
+        if (image1.src.match("cat1.jpg")) {
+            image1.src = "monkey1.jpg";
+        } else {
+            if (image1.src.match("monkey1.jpg")) {
+                image1.src = "panda1.jpg";
+            } else {
+                image1.src = "cat1.jpg"
+            }
+        } checkforMatch()
+    }
+
+    function changeImg2() {
+        if (image2.src.match("cat2.jpg")) {
+            image2.src = "monkey2.jpg";
+        } else {
+            if (image2.src.match("monkey2.jpg")) {
+                image2.src = "panda2.jpg";
+            } else {
+                image2.src = "cat2.jpg"
+            }
+        } checkforMatch()
+    }
+
+    function changeImg3() {
+        if (image3.src.match("cat3.jpg")) {
+            image3.src = "monkey3.jpg";
+        } else {
+            if (image3.src.match("monkey3.jpg")) {
+                image3.src = "panda3.jpg";
+            } else {
+                image3.src = "cat3.jpg"
+            }
+        } checkforMatch()
+    }
+    function changeImg4() {
+        if (image4.src.match("cat4.jpg")) {
+            image4.src = "monkey4.jpg";
+        } else {
+            if (image4.src.match("monkey4.jpg")) {
+                image4.src = "panda4.jpg";
+            } else {
+                image4.src = "cat4.jpg"
+            }
+        } checkforMatch()
+    }
+    function changeImg5() {
+        if (image5.src.match("cat5.jpg")) {
+            image5.src = "monkey5.jpg";
+        } else {
+            if (image5.src.match("monkey5.jpg")) {
+                image5.src = "panda5.jpg";
+            } else {
+                image5.src = "cat5.jpg"
+            }
+        } checkforMatch()
+    }
+
+    function imgsrc(src) {
+        let length = src.length; // lấy độ dài của đoạn src
+        //let nameImg = src.substring(length-5); // lấy ký tự từ ký tự thứ 5 từ cuối đến hết chuỗi
+        return length;
+    }
+    function checkforMatch() {
+        let i1 = imgsrc(document.getElementById("img1").src);
+        let i2 = imgsrc(document.getElementById("img2").src);
+        let i3 = imgsrc(document.getElementById("img3").src);
+        let i4 = imgsrc(document.getElementById("img4").src);
+        let i5 = imgsrc(document.getElementById("img5").src);
+
+        let nomatchStyle = "2px solid gray";
+        let matchStyle = "5px solid red";
+//bắt matchStyle khi tên ảnh có cùng số ký tự 
+        if ((i1 === i2 && i2 === i3 && i3 === i4 && i4===i5)  ) {
+            image1.style.border = matchStyle;
+            image2.style.border = matchStyle;
+            image3.style.border = matchStyle;
+            image4.style.border = matchStyle;
+            image5.style.border = matchStyle;
+
+        } else {
+            image1.style.border = nomatchStyle;
+            image2.style.border = nomatchStyle;
+            image3.style.border = nomatchStyle;
+            image4.style.border = nomatchStyle;
+            image5.style.border = nomatchStyle;
+
+        }
+    }
+
+</script>
