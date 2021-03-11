@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let soPhut=prompt("Nhập số phút đã gọi:","");
+
+    let tienThueBao=25;
+    let giaCuoc100PhutDau=2;
+    let giaCuoc100Den200=1.5;
+    let giaCuocTren200=1;
+    let tienCuoc;
+
+    if(soPhut<=100){
+        tienCuoc=soPhut*giaCuoc100PhutDau+tienThueBao;
+        alert("Tiền cước: "+tienCuoc);
+    }else if (tienCuoc<=200){
+        tienCuoc=(soPhut-100)*giaCuoc100Den200+200+tienThueBao;
+        alert("Tiền cước: "+tienCuoc);
+    }else {
+        tienCuoc=350+(soPhut-200)*giaCuocTren200+tienThueBao;
+        alert("Tiền cước: "+tienCuoc);
+    }
+</script>
+</body>
+</html>
