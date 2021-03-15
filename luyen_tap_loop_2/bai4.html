@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<script>
+let sao='*';
+let trang='&nbsp&nbsp';
+let hienThi=sao;
+    for (let i=0;i<7;i++){
+        if(i===0||i===6){
+            for ( let j=0; j<20;j++){
+                document.write(hienThi);
+            }
+        }
+        if(i>0&&i<6) {
+            for (let j = 0; j < 20; j++) {
+
+                if (j === 1) {
+                    hienThi = trang;
+                }
+                if (j === 19) {
+                    hienThi = sao;
+                }
+                document.write(hienThi);
+            }
+        }
+
+        document.write('<br>')
+    }
+</script>
+</body>
+</html>

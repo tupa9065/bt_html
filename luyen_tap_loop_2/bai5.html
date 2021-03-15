@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let tienGoc=parseInt(prompt("Nhập tiền vay ban đầu: "));
+    let laiThang=parseInt(prompt("Nhập % lãi hàng tháng: "));
+    let c=parseInt(prompt("Nhập số tháng vay: "));
+    let tienLai=tienGoc*laiThang/100;
+    let total=0;
+    for (let i=0;i<c;i++){
+        total = (tienGoc+tienLai) ;
+        tienLai+=total*laiThang/100;
+    }
+    alert(total)
+</script>
+</body>
+</html>
