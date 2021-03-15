@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let i=1;
+    let chuoi="";
+    while (i<=100){
+        if(i%3===0 && i%5!==0){
+            chuoi=chuoi+"Fizz, "
+            i++;
+            continue;
+        }
+        if(i%5===0 && i%3!==0){
+            chuoi=chuoi+"Buzz, "
+            i++;
+            continue;
+        }
+        if(i%3===0 && i%5===0){
+            chuoi=chuoi+"FizzBuzz, "
+            i++;
+            continue;
+        }
+        chuoi+=i+", ";
+        i++
+    }
+    alert(chuoi);
+</script>
+</body>
+</html>

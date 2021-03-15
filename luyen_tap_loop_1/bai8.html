@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <input type="button" value="Chơi" id="bt1" onclick="doanSo()">
+</form>
+
+</body>
+<script>
+
+    function doanSo(){
+        var n =prompt("nhập vào giới hạn số lớn nhất");
+        var r=Math.floor(Math.random()*n);
+        var count=1;
+        do{
+            var d=parseInt(prompt("Đoán lần thứ "+ count));
+            if(d===r){
+                alert("Bạn đã đoán chính sác")
+                break;
+            }else if(d<r){
+                alert("Bạn đã đoán nhỏ hơn")
+            }
+            else if(d>r){
+                alert("Bạn đã đoán lớn hơn")
+            }
+            count++;
+            if(count===4){
+              alert("You lose");
+              break;
+            }
+        }while (d!==r)
+    }
+</script>
+</html>

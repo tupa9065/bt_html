@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let a=[],i=1;
+    a[0]=1;
+    a[1]=1;
+
+    while (a[i]%5!==0){
+        i++;
+        a[i]=a[i-1]+a[i-2];
+    }
+
+    alert('Số đầu tiên trong dãy số fibolaxi chia hết cho 5 là: '+a[i]);
+
+
+</script>
+</body>
+</html>
