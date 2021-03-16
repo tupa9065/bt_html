@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let seach=prompt();
+    let en=['dad','mom','sister','brother','red','black','green','blue'];
+    let vi=['bo','me','chi','anh','do','den','xanh luc','xanh lam'];
+
+    for(let i=0;i<en.length;i++){
+        if(seach===en[i]){
+            document.write(seach+' co nghia la '+vi[i])
+            break;
+        }
+        if (i===en.length-1&&seach!==en[i]){
+           document.write("khong tim thay")
+        }
+    }
+</script>
+</html>
