@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+<h3>Caro Game Simple</h3>
+<p id="carogame"></p>
+<input type="button" value="Change Value" onclick="changeValue()">
+</body>
+<script>
+    var banCo=[
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,0,0,0,0]
+    ];
+    let hienThi="";
+    for (let i=0;i<banCo.length;i++){
+        for (let j=0;j<banCo[i].length;j++){
+            hienThi+=banCo[i][j]+" "
+        }
+        hienThi+='</br>';
+    }
+    document.getElementById("carogame").innerHTML=hienThi;
+
+    function changeValue(){
+        let x=prompt("đổi vi trí x= ");
+        let y=prompt("đổi vị trí y= ");
+
+        if(0<=x<=4&&0<=y<=4){
+            banCo[x][y]="x";
+        }
+        let hienThi="";
+        for (let i=0;i<banCo.length;i++){
+            for (let j=0;j<banCo[i].length;j++){
+                hienThi+=banCo[i][j]+" "
+            }
+            hienThi+='</br>';
+        }
+        document.getElementById("carogame").innerHTML=hienThi;
+    }
+</script>
+</html>
