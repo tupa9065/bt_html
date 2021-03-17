@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+        <h2>Type anthing slowly</h2>
+        <form name="f">
+            <textarea name="txa" cols="40" rows="10" onkeydown="typeTextarea();"></textarea>
+        </form>
+</div>
+</body>
+<script>
+    var str="Tôi là một học viên";
+    var a=str.toString(),n="";
+    function typeTextarea(){
+        t = document.f.txa.value;
+        j = t.length;
+        if(j > 0)
+        {
+            for(let i=0; i<j; i++)
+            {
+                n = n + a[i];
+                if(i == a.length)
+                {
+                    document.f.txa.value = "";
+                    n = "";
+                }
+            }
+        }
+        document.f.txa.value = n;
+        n="";
+        setTimeout("typeTextarea()", 1);
+
+    }
+</script>
+
+</html>
