@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1>Teamperature Converter</h1>
+    <h3>Type of value in the Fahrenheit field to converter to value to celcius</h3>
+    <h3>Fahrenheit</h3><span>
+    <form>
+        <input type="number" id="num" oninput="change()"/>
+    </form></span>
+    <h3>Celcius</h3><span id="spChange"></span>
+</div>
+</body>
+<script>
+    function change(){
+        let f=document.getElementById('num').value;
+        let c=(f-32)/1.8;
+        document.getElementById('spChange').innerHTML=c;
+    }
+</script>
+</html>
