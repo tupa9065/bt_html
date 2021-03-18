@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <form>
+        <input type="text" id="txt">
+        <input type="button" id="btToF" onclick="toF()" value="to F">
+        <input type="button" id="btToM" onclick="toM()" value="to M">
+        <span id="spValue"></span>
+    </form>
+</div>
+</body>
+<script>
+    function toF(){
+        let num=parseInt(document.getElementById("txt").value);
+        document.getElementById("spValue").innerHTML= 3.279 * num;
+    }
+    function toM(){
+        let num=parseInt(document.getElementById("txt").value);
+        document.getElementById("spValue").innerHTML= 0.305 * num;
+    }
+</script>
+</html>
