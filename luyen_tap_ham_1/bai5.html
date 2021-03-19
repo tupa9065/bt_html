@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var arr1=["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe" , "Regulus"];
+    var arr2=["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major" , "Leo"];
+
+    console.log(arr1)
+    function checkStar(str){
+        let i=arr1.indexOf(str);// i=-1 không tìm thấy str trong mảng
+        if(i==-1){
+            return "No found"
+        }else {
+            return arr2[i];
+        }
+    }
+    let str=prompt("Input star name :");
+    let result=checkStar(str);
+    document.writeln(result)
+</script>
+</html>
