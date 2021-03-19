@@ -1,19 +1,19 @@
-function check(num){
-    let str="";
-
-    for (let i=2;i<num;i++){
-        if(num%i==0){
-            str="1"
-            return "không phải số nguyên tố"
-
+function check(num) {
+    for (let i = 2; i < num; i++) {
+        if (num % i == 0) {
+            return ""
         }
-
     }
-    if(str==""){
-        return "là số nguyên tố"
+    return num
+}
+
+let str = ""
+for (let i = 2; i < 100; i++) {
+    if (check(i) != "") {
+        str += check(i) + ", ";
     }
 }
-let num=prompt();
-let value=check(num);
+document.writeln(str)
 
-document.write(num+" "+value);
+
+
