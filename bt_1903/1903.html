@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+
+</div>
+
+</body>
+<script>
+    //                                                  Bai 1
+    function lenghtStr(){
+        let str=prompt();
+        alert("str lenght "+str.length)
+    }
+    //                                                  bai 2
+    function avg() {
+        let index = parseInt(prompt("Input the numbers of the Array"));
+        let arr = [];
+        let total = 0;
+        if (index >= 1) {
+            for (let i = 0; i < index; i++) {
+                let j = i + 1
+                arr[i] = parseInt(prompt("Input number " + j))
+                total += arr[i];
+            }
+
+            document.writeln("AVG= " + total / arr.length)
+        } else {
+            document.writeln("AVG= " + total)
+        }
+    }
+
+    //avg();
+
+    //                                                  bai3
+    function minMax() {
+        let index = parseInt(prompt("Input the numbers of the Array"));
+        let arr = [];
+        let min, max;
+        if (index >= 1) {
+            for (let i = 0; i < index; i++) {
+                let j = i + 1
+                arr[i] = parseInt(prompt("Input number " + j))
+            }
+            min = arr[0];
+            max = arr[0];
+            for (let i = 1; i < index; i++) {
+                if (min > arr[i]) {
+                    min = arr[i];
+                }
+                if (max < arr[i]) {
+                    max = arr[i];
+                }
+            }
+            alert("Min = " + min + "<<>>>" + "Max = " + max)
+
+        } else {
+            alert("?")
+        }
+    }
+
+    //minMax();
+
+    //                                             Bai4
+    function calculation() {
+        let calcula = prompt("Input the Calculation do you want(+,-,x,/) ");
+        let num1, num2;
+        num1 = parseInt(prompt("Input the 1nd number"));
+        num2 = parseInt(prompt("Input the 2nd number"));
+        switch (calcula) {
+            case "+": {
+
+                alert("Result = " + num1 + num2);
+                break;
+            }
+            case "-": {
+
+                alert("Result = " + num1 - num2);
+                break;
+            }
+            case "x": {
+
+                alert("Result = " + num1 * num2);
+                break;
+            }
+            case "/": {
+
+                alert("Result = " + num1 / num2);
+            }
+        }
+    }
+
+    // calculation();
+    //                                               Bai 5
+    function checkInteger() {
+        let num = prompt("input number");
+        if (num % parseInt(num) == 0) {
+            alert(num + " is integer")
+        } else {
+            alert(num + " is not integer")
+        }
+    }
+
+    //checkInteger();
+    //                                                Bai 6
+    function hello() {
+        let name = prompt("input name");
+        alert("Hello " + name);
+    }
+    //                                                Bai 7
+    function addArr(){
+        let arr=[1,2,3];
+        arr[arr.length]=prompt("input next element");
+        alert(arr);
+    }
+    //addArr();
+    //                                                Bai 8
+    function deleteElement(){
+        let arr=["tu","nam","hoang","vinh","linh"];
+        let remove;
+        alert("Array element : "+arr);
+        let deletePeople = prompt("Input name do you want delete ");
+        let index=-1;
+        for(let i=0;i<arr.length;i++){
+            if(arr[i]==deletePeople){
+                index=i;
+            }
+        }
+        if(index!=-1){
+             remove=arr.splice(index,1);
+             alert(arr)
+        }else {
+            alert("Can't find people")
+        }
+    }
+    //deleteElement();
+    //                                                  Bai 9
+
+    function searchPeople(){
+        let arr=["tu","nam","hoang","vinh","linh"];
+        let searchPeople = prompt("Input name do you want find ");
+        let index=-1;
+        for(let i=0;i<arr.length;i++){
+            if(arr[i]==searchPeople){
+                index=i;
+            }
+        }
+        if(index!=-1){
+            alert(searchPeople+" in class")
+        }else {
+            alert("Can't find people")
+        }
+    }
+    //searchPeople();
+
+    //                                                  Bai 10
+    function countLoop(){
+        let arr=["tu","nam","tu","thanh","tu","nam","quang","thanh","quang"];
+
+        let str=[];
+        for (let i = 0;i<arr.length;i++){
+            for(let j =i+1;j<arr.length;j++){
+                if(arr[i]==arr[j]){
+                    if(str.length==0){
+                        str[0]=arr[i];
+                    }else {
+                        let check=0;
+                        for (let k=0;k<str.length;k++){
+                            if(str[k]==arr[j]){
+                                check=1;
+                            }
+                        }
+                        if(check==0){
+                            str.push(arr[i])
+                        }
+                    }
+                }
+            }
+        }
+        alert(str)
+    }
+    countLoop();
+</script>
+</html>
