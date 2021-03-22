@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function check(num){
+        alert(num%parseInt(num));
+        if(num%(parseInt(num))==0&&num>0){
+                return true;
+        }else
+            return false;
+
+    }
+    let num=prompt();
+    let resul=check(num);
+    alert(resul);
+</script>
+</html>

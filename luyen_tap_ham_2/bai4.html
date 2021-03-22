@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <form>
+        <input type="text" onkeydown="check()" id="txt">
+        <span id="sp"></span>
+    </form>
+</div>
+</body>
+<script>
+    function check(){
+        addEventListener("keydown", function (event) {
+            if(57>=event.keyCode&&event.keyCode>=48){
+                document.getElementById("sp").innerHTML="is number"
+            }
+            else {
+                document.getElementById("sp").innerHTML="not is number"
+            }
+            document.getElementById("txt").value="";
+        });
+
+    }
+
+
+
+
+</script>
+</html>
