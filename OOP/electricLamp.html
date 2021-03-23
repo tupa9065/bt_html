@@ -5,55 +5,86 @@
     <title>Title</title>
 </head>
 <body>
-
+<div>
+    <button type="button" id="switch" style="height: 50px;width: 50px" onclick="onClick()">Off</button>
+    <p id="lamp"></p>
+</div>
 </body>
 <script>
-    class SwitchButton{
-        constructor(status,lamp) {
-            this.status=status;
-            this.lamp=lamp;
+
+    class SwitchButton {
+        status;
+        lamp;
+
+        constructor() {
+            this.status = false;
         }
-        get getStatus(){
+
+        get getStatus() {
             return this.status;
         }
-        set setStatus(status){
-             this.status=status;
+
+        set setStatus(status) {
+            this.status = status;
         }
-        connectToLamp(lamp){
-           lamp.setStatus=this.status;
+
+        connectToLamp(lamp) {
+            this.lamp = lamp;
         }
-        switchOn(){
-            this.status=true;
+
+        switchOn() {
+            this.status = true;
+            document.getElementById("switch").innerHTML = "ON";
+            this.lamp.turnOn();
         }
-        switchOff(){
-            this.status=false;
+
+        switchOff() {
+            this.status = false;
+            document.getElementById("switch").innerHTML = "OFF";
+            this.lamp.turnOff();
         }
 
     }
-    class ElectricLamp{
-        constructor(status) {
-            this.status=status;
+
+    class ElectricLamp {
+        status;
+
+        constructor() {
+            this.status = false;
         }
-        set setStatus(status){
-            this.status=status;
+
+        setStatus(status) {
+            this.status = status;
         }
-        get getStatus(){
+
+        getStatus() {
             return this.status;
         }
-        turnOn(){
-            this.status=true;
+
+        turnOn() {
+            this.status = true;
+            document.getElementById("lamp").innerHTML = "yellow"
         }
-        turnOff(){
-            this.status=false;
+
+        turnOff() {
+            this.status = false;
+            document.getElementById("lamp").innerHTML = "black"
         }
     }
-    let lamp=new ElectricLamp(false);
-    let  button=new SwitchButton(false,lamp);
-    button.connectToLamp(lamp);
-    document.write(button.status,lamp.status,"</br>");
-    button.switchOn();
-    button.connectToLamp(lamp);
-    document.write(button.status,lamp.status,"</br>");
+
+    var lamp1 = new ElectricLamp();
+    var button1 = new SwitchButton();
+    button1.connectToLamp(lamp1);
+
+    function onClick() {
+        if (button1.status == false) {
+            button1.switchOn();
+        } else {
+            button1.switchOff();
+        }
+
+    }
+
 
 </script>
 </html>
