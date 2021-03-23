@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>[Bài tập] Xây dựng lớp mô tả Temperature</title>
+</head>
+<body>
+<a>Độ F = </a><span id="f"></span><a> F</a><br/>
+<a>Độ K = </a><span id="k"></span><a>  K</a>
+</body>
+</html>
+<script>
+    class Temperature {
+        constructor(c) {
+            this.doc=c;
+            this.chuyendoF = function () {
+                return this.doc * 1.8 + 32;
+            }
+            this.chuyendoK = function () {
+                return this.doc + 273.15;
+            }
+
+        }
+
+    }
+    var a = new Temperature(25)
+    document.getElementById("f").innerHTML = a.chuyendoF()
+    document.getElementById("k").innerHTML = a.chuyendoK()
+</script>
