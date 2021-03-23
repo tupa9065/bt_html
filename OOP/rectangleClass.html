@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="700" height="700"></canvas>
+</body>
+<script>
+    function getRandomColor() {
+        let red = Math.floor(Math.random() * 255);
+        let green = Math.floor(Math.random() * 255);
+        let blue = Math.floor(Math.random() * 255);
+        return "rgb(" + red + "," + blue + "," + green + ")";
+    }
+
+    class Rectangle {
+        constructor(a, b) {
+            this.chieuDai = a;
+            this.chieuRong = b;
+        }
+
+        get getAcreage() {
+            return this.chieuDai * this.chieuRong;
+        }
+
+        get getPerimeter() {
+            return (this.chieuRong + this.chieuDai) * 2;
+        }
+
+        set setChieuDai(a) {
+            this.chieuDai = a;
+        }
+
+        set setChieuRong(b) {
+            this.chieuRong = b;
+        }
+
+        get getChieuDai() {
+            return this.chieuDai;
+        }
+
+        get getChieuRong() {
+            return this.chieuRong;
+        }
+
+        createRectangle() {
+            let ctx = document.getElementById("myCanvas").getContext("2d");
+            let color = getRandomColor();
+            ctx.fillStyle = color;
+            ctx.fillRect(200,150, this.getChieuDai,this.getChieuRong);
+        }
+
+    }
+
+    let rec = new Rectangle(300, 150);
+    rec.createRectangle();
+
+    rec.setChieuDai = +prompt("Chieu dai");
+    rec.setChieuRong = +prompt("chieu rong");
+
+    rec.createRectangle();
+    alert("Dai" + rec.getChieuDai);
+    alert("Rong" + rec.getChieuRong);
+
+</script>
+</html>
