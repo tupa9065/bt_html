@@ -1,10 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+
 </body>
+<script>
+    class Phone {
+        name;
+        status;
+        battery;
+        message;
+        inBox=[];
+        outBox=[];
+
+        constructor() {
+            this.status=false;
+        }
+
+        checkOnOff() {
+            return status;
+        }
+
+        onMobilePhone() {
+            if(this.battery>0){
+                this.status = true;
+            }else {
+                alert("Battery is low please charging")
+            }
+
+        }
+
+        offMobilePhone() {
+            this.status = false;
+        }
+
+        charging() {
+            this.battery++;
+        }
+
+        texting() {
+            if(this.status) {
+                this.message = prompt(this.name+" texting: ");
+                this.battery--;
+                this.checkBattery();
+            }else {
+                alert("Turn on your phone");
+            }
+        }
+        showInBox(){
+            if(this.status) {
+                document.write("in box off "+this.name+"</br>"+this.inBox);
+                this.battery--;
+                this.checkBattery();
+            }else {
+                alert("Turn on your phone");
+            }
+        }
+        showOutBox(){
+            if(this.status) {
+                document.write("out box off "+this.name+"</br>"+this.outBox);
+                this.battery--;
+                this.checkBattery();
+            }else {
+                alert("Turn on your phone");
+            }
+        }
+        sentMessage(Phone){
+            if(this.status) {
+                Phone.inBox.push("From "+this.name+"</br>"+this.message+"</br>");
+                this.outBox.push("To "+Phone.name + "</br>" + this.message+"</br>");
+                this.battery--;
+                this.checkBattery();
+            }else {
+                alert("Turn on your phone");
+            }
+        }
+        checkBattery(){
+            if (this.battery==0){
+                alert("Battery is low");
+                this.offMobilePhone();
+            }
+        }
+    }
+    let nokia = new Phone();
+    nokia.name="nokia";
+    let iphone = new Phone();
+    iphone.name="iphone";
+
+    nokia.battery=100;
+    iphone.battery=100;
+
+    nokia.onMobilePhone();
+    iphone.onMobilePhone();
+
+    nokia.texting();
+    nokia.sentMessage(iphone);
+
+
+    nokia.showOutBox();
+    iphone.showInBox();
+
+</script>
 </html>

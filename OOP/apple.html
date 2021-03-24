@@ -1,10 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+
 </body>
+<script>
+    class Apple {
+        weight;
+        constructor(w) {
+            this.weight = w;
+        }
+        // hàm này giảm số lượng táo
+        decrease = function () {
+            this.weight--;
+        }
+        isEmpty = function () {
+            if(this.weight > 0){
+                return true;
+            }
+            return false;
+        }
+        getWeight = function () {
+            return this.weight;
+        }
+    }
+    class Human{
+        name;
+        gender;
+        weight;
+        constructor(name,gender,weight) {
+            this.weight = weight;
+            this.gender = gender;
+            this.name = name;
+        }
+        eat = function (apple) {
+            apple.weight--;
+        }
+        checkApple = function (apple) {
+            var isEmpty = apple.isEmpty();
+            return isEmpty;
+        }
+    }
+    var quaTao = new Apple(100);
+    var human = new Human("sonmc","name","65kg");
+    function anTao() {
+        human.eat(quaTao);
+        document.getElementById("result").innerHTML = quaTao.weight;
+    }
+</script>
 </html>
