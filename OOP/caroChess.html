@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+
+    td{
+        height: 30px;
+        width: 30px;
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+<body>
+<div>
+    <p id="p1"></p>
+</div>
+</body>
+<script>
+    let arr=[];
+    let str="<table>";
+
+    function veBanCo() {
+        for (let i = 0; i < 20; i++) {
+            arr[i] = []
+            str += "<tr>";
+            for (let j = 0; j < 20; j++) {
+                arr[i][j] = "";
+                id = "" + i + j;
+                str += "<td onclick='danh(this.id," + i + "," + j + ")' id=" + id + ">" + arr[i][j] + "</td>"
+            }
+            str += "</tr>"
+        }
+        str += "</table>"
+        document.getElementById("p1").innerHTML = str;
+    }
+
+    veBanCo();
+    console.log(arr);
+    var xo=2;
+    var turn=0;
+    function danh(id,i,j) {
+
+        let value = document.getElementById(id).innerHTML;
+        if (value == "") {
+
+            if (xo % 2 === 0) {
+                document.getElementById(id).innerHTML = "X";
+                xo++;
+                turn++;
+            } else {
+                document.getElementById(id).innerHTML = "0";
+                xo++;
+                turn++;
+            }
+            arr[i][j] = document.getElementById(id).innerHTML;
+            checkWin();
+        }
+    }
+    function checkWin(){
+        let winner=""
+        for(let i=0;i<arr.length;i++){
+            let count=0;
+            for(let j =0;j<arr.length;j++){
+                if(arr[i][j]==arr[i][j+1]&&arr[i][j]!=""){
+                    count++;
+                }else{
+                    count =0;
+                }
+                if(count==4){
+                    winner=arr[i][j]
+                    alert("Winner:"+winner)
+                    break
+                }
+            }
+        }
+
+        for (let j = 0; j < arr.length ; j++) {
+            let count=0;
+            for (let i = 0; i < arr[i].length-4; i++) {
+                if (arr[i][j] === arr[i + 1][j] && arr[i][j] !== "") {
+                    count++
+                }else{
+                    count=0;
+                }
+                if(count==4){
+                    winner=arr[i][j]
+                    alert("Winner:"+winner)
+                    break
+                }
+            }
+        }
+        for (let i = 0; i < arr.length - 4; i++) {
+            for (let j = 0; j < arr[i].length - 4; j++) {
+                if (arr[i][j] === arr[i + 1][j + 1] && arr[i][j] !== "") {
+                    if (arr[i + 1][j + 1] === arr[i + 2][j + 2]) {
+                        if (arr[i + 2][j + 2] === arr[i + 3][j + 3]) {
+                            if (arr[i + 3][j + 3] === arr[i + 4][j + 4]) {
+                                winner=arr[i][j]
+                                alert(arr[i][j] + " win ")
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for (let i = 0; i < arr.length - 4; i++) {
+            for (let j = 4; j < arr[i].length; j++) {
+                if (arr[i][j] === arr[i + 1][j - 1] && arr[i][j] !== "") {
+                    if (arr[i + 1][j - 1] === arr[i + 2][j - 2]) {
+                        if (arr[i + 2][j - 2] === arr[i + 3][j - 3]) {
+                            if (arr[i + 3][j - 3] === arr[i + 4][j - 4]) {
+                                winner=arr[i][j]
+                                alert(arr[i][j] + " win ")
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+      if(turn==81 && arr==""){
+            alert("draw");
+        }
+
+    }
+
+</script>
+</html>
