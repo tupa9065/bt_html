@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0
+    }
+
+    canvas {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+    }
+</style>
+<body>
+<div>
+    <h3 style="color: red; text-align: center" id="score"></h3>
+</div>
+<canvas id="myCanvas" width="480" height="320"></canvas>
+</body>
+<script>
+    var score = 0;
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    //---------------class ball
+    class Ball {
+
+        constructor(x, y, radius, color, speed) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.color = color;
+            this.speed = speed;
+            this.dx = speed;
+            this.dy = -speed;
+        }
+
+
+        drawBall() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.closePath();
+            this.x += this.dx
+            this.y += this.dy;
+        }
+
+
+    }
+    //-----------------------------class pad
+    class Pad{
+        rightPressed = false;
+        leftPressed = false;
+        constructor(x,width,height,color,speed) {
+            this.x=x;
+            this.width=width;
+            this.height=height;
+            this.color=color;
+            this.speed=speed;
+        }
+        drawPad(){
+            ctx.beginPath();
+            ctx.rect(this.x,canvas.height-this.height,this.width,this.height);
+            ctx.fillStyle=this.color;
+            ctx.fill();
+            ctx.closePath();
+        }
+        moveLeft(){
+            this.x-=this.speed;
+        }moveRight(){
+            this.x+=this.speed;
+        }
+    }
+    //-----------------------------
+
+    var ball = new Ball(canvas.width / 2, canvas.height / 2, 10, "blue", 2);
+    var pad= new Pad((canvas.width-70)/2,90,10,"blue",7);
+
+    function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ball.drawBall();
+        pad.drawPad();
+        if(ball.x>canvas.width-ball.radius||ball.x<ball.radius){
+            ball.dx = -ball.dx;
+        }
+        if(ball.y<ball.radius){
+            ball.dy=-ball.dy;
+        }
+        if(ball.y+ball.dy >canvas.height-ball.radius-pad.height){
+            if(ball.x>=pad.x&&ball.x<=pad.x+pad.width){
+                ball.dy = -ball.dy;
+                score ++;
+            }
+        }
+        if(ball.y>canvas.height-ball.radius){
+            document.location.reload();
+            alert("GAME OVER");
+        }
+        document.getElementById("score").innerHTML="SCORE: "+score;
+    }
+   // draw();
+    setInterval(draw,10);
+    function moveKeyDown(event) {
+        switch (event.keyCode) {
+            case 37 : {
+                pad.moveLeft();
+                pad.leftPressed=true;
+                break;
+            }
+            case 39:{
+                pad.moveRight()
+                pad.rightPressed=true;
+                break;
+            }
+        }
+    }
+    function moveKeyUp(event){
+        switch (event.keyCode) {
+            case 37 : {
+                pad.leftPressed=false;
+                break;
+            }
+            case 39:{
+                pad.rightPressed=false;
+                break;
+            }
+        }
+    }
+    window.addEventListener("keydown",moveKeyDown);
+    window.addEventListener("keyup",moveKeyUp);
+
+
+
+</script>
+</html>

@@ -12,10 +12,11 @@
 </body>
 <script>
     //                                                  Bai 1
-    function lenghtStr(){
-        let str=prompt();
-        alert("str lenght "+str.length)
+    function lenghtStr() {
+        let str = prompt();
+        alert("str lenght " + str.length)
     }
+
     //                                                  bai 2
     function avg() {
         let index = parseInt(prompt("Input the numbers of the Array"));
@@ -111,70 +112,74 @@
         let name = prompt("input name");
         alert("Hello " + name);
     }
+
     //                                                Bai 7
-    function addArr(){
-        let arr=[1,2,3];
-        arr[arr.length]=prompt("input next element");
+    function addArr() {
+        let arr = [1, 2, 3];
+        arr[arr.length] = prompt("input next element");
         alert(arr);
     }
+
     //addArr();
     //                                                Bai 8
-    function deleteElement(){
-        let arr=["tu","nam","hoang","vinh","linh"];
+    function deleteElement() {
+        let arr = ["tu", "nam", "hoang", "vinh", "linh"];
         let remove;
-        alert("Array element : "+arr);
+        alert("Array element : " + arr);
         let deletePeople = prompt("Input name do you want delete ");
-        let index=-1;
-        for(let i=0;i<arr.length;i++){
-            if(arr[i]==deletePeople){
-                index=i;
+        let index = -1;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] == deletePeople) {
+                index = i;
             }
         }
-        if(index!=-1){
-             remove=arr.splice(index,1);
-             alert(arr)
-        }else {
+        if (index != -1) {
+            remove = arr.splice(index, 1);
+            alert(arr)
+        } else {
             alert("Can't find people")
         }
     }
+
     //deleteElement();
     //                                                  Bai 9
 
-    function searchPeople(){
-        let arr=["tu","nam","hoang","vinh","linh"];
+    function searchPeople() {
+        let arr = ["tu", "nam", "hoang", "vinh", "linh"];
         let searchPeople = prompt("Input name do you want find ");
-        let index=-1;
-        for(let i=0;i<arr.length;i++){
-            if(arr[i]==searchPeople){
-                index=i;
+        let index = -1;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] == searchPeople) {
+                index = i;
             }
         }
-        if(index!=-1){
-            alert(searchPeople+" in class")
-        }else {
+        if (index != -1) {
+            alert(searchPeople + " in class")
+        } else {
             alert("Can't find people")
         }
     }
+
     //searchPeople();
 
     //                                                  Bai 10
-    function countLoop(){
-        let arr=["tu","nam","tu","thanh","tu","nam","quang","thanh","quang"];
+    function countLoop() {
+        let arr = [1, 1, 2, 3, 1, 4, 5, 4, 4, 4, 6, 1, 2, 2, 5, 7, 7, 9, 12, 46, 2];
 
-        let str=[];
-        for (let i = 0;i<arr.length;i++){
-            for(let j =i+1;j<arr.length;j++){
-                if(arr[i]==arr[j]){
-                    if(str.length==0){
-                        str[0]=arr[i];
-                    }else {
-                        let check=0;
-                        for (let k=0;k<str.length;k++){
-                            if(str[k]==arr[j]){
-                                check=1;
+        let str = [];
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = i + 1; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    if (str.length == 0) {
+                        str[0] = arr[i];
+                    } else {
+                        let check = 0;
+                        for (let k = 0; k < str.length; k++) {
+                            if (str[k] == arr[j]) {
+                                check = 1;
                             }
                         }
-                        if(check==0){
+                        if (check == 0) {
                             str.push(arr[i])
                         }
                     }
@@ -183,6 +188,52 @@
         }
         alert(str)
     }
-    countLoop();
+
+    //countLoop();
+    //--------------------------------BT 11
+    function nguyenTo50() {
+        let arr = [];
+        arr[0] = 2;
+        let i = 3;
+        while (arr.length < 100) {
+            let check = 1;
+            for (let j = 2; j < i; j++) {
+                if (i % j == 0) {
+                    check = 0;
+                    break;
+                }
+            }
+            if (check == 1) {
+                arr.push(i) ;
+            }
+            i++;
+        }
+        return arr;
+    }
+
+   // let a = nguyenTo50();
+   // alert(a);
+    //--------------------------sap sap
+    function sapXep(){
+    var arr=[7,2,4,3,6,7,2,9,12];
+    var tem;
+    for(let i=0;i<arr.length;i++){
+        for (let j=i+1;j<arr.length;j++){
+            if(arr[i]>arr[j]){
+                tem=arr[i];
+                arr[i]=arr[j];
+                arr[j]=tem;
+            }
+        }
+    }
+    return arr;
+    }
+    var sum = 0;
+    for(var i = 0; i < 8; i++){
+        if(i % 3 === 0){
+            sum += i;
+        }
+    }
+    document.write(sum);
 </script>
 </html>

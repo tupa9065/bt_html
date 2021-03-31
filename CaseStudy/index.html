@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bouncing Ball Game</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0
+    }
+
+    canvas {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+    }
+</style>
+<body>
+<div>
+    <h3 style="color: red; text-align: center" id="score"></h3>
+</div>
+<canvas id="myCanvas" width="480" height="380"></canvas>
+</body>
+<script>
+    var score = 0;
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    var ballSpeed = 5;
+    var anDiem = new Audio("anDiem.mp3");
+    var go = new Audio("go.mp3");
+    var gameOver = new Audio("gameOver.mp3");
+    var countBall = 1;
+    var countFrame = 0;
+
+
+    //1------------------------------class ball
+    class Ball {
+        dx;
+        dy;
+
+        constructor(x, y, radius, color) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.color = color;
+            this.dx = ballSpeed;
+            this.dy = -ballSpeed;
+        }
+
+        drawBall() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.closePath();
+            this.x += this.dx
+            this.y += this.dy;
+            if (this.x + this.dx > canvas.width - this.radius || this.x + this.dx < this.radius) {
+                this.dx = -this.dx;
+                go.play();
+            }
+            if (this.y + this.dy < this.radius) {
+                this.dy = -this.dy;
+                go.play();
+            }
+        }
+
+        checkOver() {
+            if (this.y > canvas.height - this.radius) {
+                countBall--;
+            }
+        }
+
+
+    }
+
+    //2-----------------------------class pad
+    class Pad {
+        rightPressed = false;
+        leftPressed = false;
+
+        constructor(x, y, width, height, color) {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+            this.color = color;
+            this.speed = 5;
+        }
+
+        drawPad() {
+            ctx.beginPath();
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.closePath();
+            if (this.rightPressed && this.x < canvas.width - this.width) {
+                this.x += this.speed;
+            } else if (this.leftPressed && this.x > 0) {
+                this.x -= this.speed;
+            }
+        }
+
+        // checkGif(gif) {
+        //     if (gif.y > canvas.height - 15 - pad.height) {
+        //         if (gif.x > pad.x && gif.x < pad.x + pad.width) {
+        //             gameOver.play()
+        //             document.location.reload();
+        //             alert("GAME OVER");
+        //
+        //         }
+        //     }
+        // }
+
+        checkBall(ball) {
+            if (ball.y + ball.dy > canvas.height - ball.radius - pad.height) {
+                if (ball.x + ball.dx > pad.x && ball.x + ball.dx < pad.x + pad.width) {
+                    ball.dy = -ball.dy;
+                    score++;
+                    anDiem.play();
+                    switch (score) {
+                        case 5: {
+                            if(ball.dx>0){
+                                ball.dx = 6;
+                            }else {
+                                ball.dx=-6;
+                            }
+
+                            ball.dy = 6;
+                            break;
+                        }
+                        case 10: {
+                            if(ball.dx>0){
+                                ball.dx = 7;
+                            }else {
+                                ball.dx=-7;
+                            }
+                            ball.dy = 7;
+                            break;
+                        }
+                        case 20: {
+                            if(ball.dx>0){
+                                ball.dx = 8;
+                            }else {
+                                ball.dx=-8;
+                            }
+                            ball.dy = 8;
+
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        autoMove() {
+            this.x += this.speed;
+            if (this.x == canvas.width - this.width) {
+                this.speed = -this.speed;
+            }
+            if (this.x == 0) {
+                this.speed = -this.speed;
+            }
+        }
+
+        moveLeft() {
+            if (this.x > 0) {
+                this.x -= this.speed;
+            }
+        }
+
+        moveRight() {
+            if (this.x < canvas.width - this.width) {
+                this.x += this.speed;
+            }
+        }
+    }
+
+    //3-----------------------------class gif
+    // class Gif {
+    //     x;
+    //     y;
+    //     constructor() {
+    //
+    //     }
+    //     drawGif(dx, dy) {
+    //         ctx.beginPath();
+    //         ctx.rect(this.x, this.y, 15, 15);
+    //         ctx.fillStyle = "Red";
+    //         ctx.fill();
+    //         ctx.closePath();
+    //         this.x += dx;
+    //         this.y += dy;
+    //     }
+    // }
+
+    //4-----------------------------
+    var ball = new Ball(canvas.width / 2, canvas.height / 2, 10, "#0095DD");
+    var pad = new Pad((canvas.width - 70) / 2, canvas.height - 10, 110, 10, "#0095DD");
+    var boss = new Pad((canvas.width - 70) / 2, 40, 60, 10, "red");
+
+    //5------------------------------
+
+    function bxb(){
+        if (ball.y + ball.dy <  boss.height+40 && ball.y + ball.dy >  40) {
+            if (ball.x + ball.dx > boss.x && ball.x + ball.dx < boss.x + boss.width) {
+                ball.dy = -ball.dy;
+                go.play();
+            }
+        }
+        if (ball.x + ball.dx <  boss.x+boss.width && ball.x + ball.dx > boss.x) {
+            if(ball.y>40&&ball.y<40+boss.height){
+                this.dx = -this.dx;
+                go.play();
+            }
+
+        }
+
+
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        document.getElementById("score").innerHTML = "SCORE: " + score;
+        ball.drawBall();
+        ball.checkOver();
+        pad.drawPad();
+        bxb();
+        pad.checkBall(ball);
+        boss.drawPad();
+        boss.autoMove();
+
+        if (countBall == 0) {
+            gameOver.play()
+            document.location.reload();
+            alert("GAME OVER");
+        }
+
+
+    }
+
+    function animate() {
+        draw();
+        //countFrame += 1;
+        requestAnimationFrame(animate)
+    }
+
+    animate();
+    // setInterval(draw, 10);
+    //6--------------------------------------------Bat di chuyen cua thanh Pad
+    function moveKeyDown(event) {
+        switch (event.keyCode) {
+            case 37 : {
+                pad.moveLeft();
+                pad.leftPressed = true;
+                break;
+            }
+            case 39: {
+                pad.moveRight()
+                pad.rightPressed = true;
+                break;
+            }
+        }
+    }
+
+    function moveKeyUp(event) {
+        switch (event.keyCode) {
+            case 37 : {
+                pad.leftPressed = false;
+                break;
+            }
+            case 39: {
+                pad.rightPressed = false;
+                break;
+            }
+        }
+    }
+
+    window.addEventListener("keydown", moveKeyDown);
+    window.addEventListener("keyup", moveKeyUp);
+</script>
+</html>

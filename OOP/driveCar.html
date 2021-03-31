@@ -3,124 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/style.css"/>
+
 </head>
-<body onkeydown="gameBoard.moveNinja(event)">
-<canvas id="gameCanvas" width="500px" height="500px"></canvas>
+<style>
+    canvas{
+        border: solid 3px #000;
+    }
+</style>
+<body >
+<canvas id="gameCanvas" width="1500px" height="600px" tabindex=”1″></canvas>
 </body>
 <script>
-    const GAMEBOARD_WIDTH = 500;
-    const GAMEBOARD_HEIGHT = 500;
 
-    const ORIENTATION_LEFT = "left";
-    const ORIENTATION_RIGHT = "right";
-    const ORIENTATION_UP = "up";
-    const ORIENTATION_DOWN = "down";
 
-    const NINJA_WIDTH = 59;
-    const NINJA_HEIGHT = 86;
-
-    const DEFAULT_NINJA_X_POSITION = 100;
-    const DEFAULT_NINJA_Y_POSITION = 100;
-    const DEFAULT_NINJA_ORIENTATION = ORIENTATION_DOWN;
-    const DEFAULT_NINJA_SPEED = 20;
-
-    function Ninja(){
-        this.xPosition = DEFAULT_NINJA_X_POSITION;
-        this.yPosition = DEFAULT_NINJA_Y_POSITION;
-        this.orientation = ORIENTATION_DOWN;
-        this.speed = DEFAULT_NINJA_SPEED;
-        this.step = 1;
-
-        this.buildImage = function(){
-            this.image = this.orientation + this.step + '.png';
-        };
-
-        this.buildImage();
-
-        this.move = function(){
-            switch (this.orientation) {
-                case ORIENTATION_DOWN:
-                    this.yPosition += this.speed;
-                    break;
-                case ORIENTATION_UP:
-                    this.yPosition -= this.speed;
-                    break;
-                case ORIENTATION_LEFT:
-                    this.xPosition -= this.speed;
-                    break;
-                case ORIENTATION_RIGHT:
-                    this.xPosition += this.speed;
-                    break;
+    class Car{
+      top=400;
+      left=450;
+      speed=20;
+      drawCar(){
+            let img= new Image();
+            img.src="oto.png"
+            img.onload= () => {
+                ctx.drawImage(img,this.left,this.top,70,150)
             }
-
-            if(this.step === 2){
-                this.step = 1;
-            } else {
-                this.step = 2;
-            }
-            this.buildImage();
-        };
-
-        this.turn = function(orientation){
-            this.orientation = orientation;
-            this.step = 1;
-            this.buildImage();
-        };
-
-        this.show = function(ctx){
-            var image = new Image();
-            var xPosition = this.xPosition;
-            var yPosition = this.yPosition;
-            image.onload = function(){
-                ctx.drawImage(image, xPosition, yPosition);
-            };
-            image.src = './images/' + this.image;
+          ctx.drawImage(img,this.left,this.top,70,150)
+      }
+      moveLeft(){
+          this.left -= this.speed;
+      }
+      moveRight(){
+          this.left+=this.speed;
+      }
+      moveUp(){
+          this.top-=this.speed;
+      }
+        moveDown(){
+            this.top+=this.speed;
         }
     }
 
-    function GameBoard() {
-        this.ninja = new Ninja();
-        this.ctx = undefined;
-        this.start = function(){
-            this.ctx = document.getElementById('gameCanvas').getContext('2d');
-            this.ninja.show(this.ctx);
-        };
-
-        this.render = function(){
-            this.ctx.clearRect(0, 0, GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT);
-            this.ninja.show(this.ctx);
-        };
-
-        this.moveNinja = function(event){
-            var orientation = 0;
-            switch (event.which){
-                case 37:
-                    orientation = ORIENTATION_LEFT;
-                    break;
-                case 38:
-                    orientation = ORIENTATION_UP;
-                    break;
-                case 39:
-                    orientation = ORIENTATION_RIGHT;
-                    break;
-                case 40:
-                    orientation = ORIENTATION_DOWN;
-                    break;
+    function moveCar(event){
+        switch (event.keyCode){
+            case 37: {
+                car.moveLeft();
+                break;
             }
-
-            if(orientation){
-                if(this.ninja.orientation !== orientation){
-                    this.ninja.orientation = orientation;
-                } else {
-                    this.ninja.move();
-                }
-                this.render();
+            case 39: {
+                car.moveRight();
+                break;
+            }
+            case 38: {
+                car.moveUp();
+                break;
+            }
+            case 40: {
+                car.moveDown();
+                break;
+            }
+            case 17:{
+                car.speed+=10;
             }
         }
+        ctx.clearRect(0, 0, canvas.width,canvas.height);
+        car.drawCar();
     }
+    var canvas = document.getElementById("gameCanvas");
+    var ctx=canvas.getContext("2d");
+    var car = new Car();
+    car.drawCar();
+    window.addEventListener('keydown', moveCar)
 
-    var gameBoard = new GameBoard();
-    gameBoard.start();
 </script>
 </html>
